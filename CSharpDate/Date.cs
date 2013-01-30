@@ -31,7 +31,7 @@ namespace System
 			this._dt = new DateTime(year, month, day);
 		}
 
-		private Date(DateTime dateTime)
+		public Date(DateTime dateTime)
 		{
 			this._dt = dateTime.AddHours(-dateTime.Hour).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
 		}
@@ -305,6 +305,14 @@ namespace System
 			bool success = DateTime.TryParseExact(s, formats, provider, style, out d);
 			result = new Date(d);
 			return success;
+		}
+	}
+
+	public static class DateTimeExtensions
+	{
+		public static Date ToDate(this DateTime dt)
+		{
+			return new Date(dt);
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace CSharpDate.Test
 	public class DateTests
 	{
 		[Test]
-		public void CanCreate()
+		public void CanConstructDefault()
 		{
 			Date d = new Date();
 
@@ -33,6 +33,29 @@ namespace CSharpDate.Test
 			Assert.AreEqual(Date.MinValue.Day, d.Day);
 			Assert.AreEqual(Date.MinValue.DayOfWeek, d.DayOfWeek);
 			Assert.AreEqual(Date.MinValue.DayOfYear, d.DayOfYear);
+		}
+
+		[Test]
+		public void CanConstruct()
+		{
+			Date d = new Date(2013, 4, 5);
+
+			Assert.AreEqual(2013, d.Year);
+			Assert.AreEqual(4, d.Month);
+			Assert.AreEqual(5, d.Day);
+			Assert.AreEqual(DayOfWeek.Friday, d.DayOfWeek);
+			Assert.AreEqual(31 + 28 + 31 + 5, d.DayOfYear);
+		}
+
+		[Test]
+		public void CanGetDateFromDateTime()
+		{
+			DateTime dt = new DateTime(2013, 4, 5, 6, 7, 8);
+			Date d = dt.ToDate();
+
+			Assert.AreEqual(dt.Year, d.Year);
+			Assert.AreEqual(dt.Month, d.Month);
+			Assert.AreEqual(dt.Day, d.Day);
 		}
 
 		[Test]
