@@ -1,7 +1,7 @@
 csharp-date
 ===========
 
-Implementation of the [missing C# Date struct](http://stackoverflow.com/questions/5314309/a-type-for-date-only-in-c-sharp-why-is-there-no-date-type).
+Implementation of the missing C# [Date](https://github.com/claycephus/csharp-date/blob/master/CSharpDate/Date.cs) struct.
 
 Include as a [single file](https://github.com/claycephus/csharp-date/blob/master/CSharpDate/Date.cs).
 
