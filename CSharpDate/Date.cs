@@ -266,6 +266,9 @@ namespace System
 
 		public string ToString(string format)
 		{
+			if (format == "O" || format == "o" || format == "s")
+				return this.ToString("yyyy-MM-dd");
+
 			return this._dt.ToString(format);
 		}
 
@@ -273,7 +276,6 @@ namespace System
 		{
 			return this._dt.ToString(format, provider);
 		}
-
 
 		public static bool TryParse(string s, out Date result)
 		{

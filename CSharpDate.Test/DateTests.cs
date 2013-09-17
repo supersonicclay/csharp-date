@@ -312,5 +312,32 @@ namespace CSharpDate.Test
 				Assert.IsFalse(success);
 			}
 		}
+
+		[Test]
+		public void CanPresentRoundTripPattern()
+		{
+			using (new CultureScope(CultureInfo.InvariantCulture))
+			{
+				Date d = new Date(2013, 4, 5);
+				string s1 = d.ToString("O");
+				string s2 = d.ToString("o");
+
+				Assert.AreEqual(s1, s2);
+				Assert.AreEqual("2013-04-05", s1);
+				Assert.AreEqual("2013-04-05", s2);
+			}
+		}
+
+		[Test]
+		public void CanPresentSortablePattern()
+		{
+			using (new CultureScope(CultureInfo.InvariantCulture))
+			{
+				Date d = new Date(2013, 4, 5);
+				string s = d.ToString("s");
+
+				Assert.AreEqual("2013-04-05", s);
+			}
+		}
 	}
 }
