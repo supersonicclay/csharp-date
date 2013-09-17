@@ -267,7 +267,9 @@ namespace System
 		public string ToString(string format)
 		{
 			if (format == "O" || format == "o" || format == "s")
+			{
 				return this.ToString("yyyy-MM-dd");
+			}
 
 			return this._dt.ToString(format);
 		}
