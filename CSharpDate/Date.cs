@@ -33,7 +33,7 @@ namespace System
 
 		public Date(DateTime dateTime)
 		{
-			this._dt = dateTime.AddHours(-dateTime.Hour).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
+			this._dt = dateTime.AddTicks(-dateTime.Ticks % TimeSpan.TicksPerDay);
 		}
 
 		public static TimeSpan operator -(Date d1, Date d2)

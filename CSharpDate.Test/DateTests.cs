@@ -47,6 +47,24 @@ namespace CSharpDate.Test
 			Assert.AreEqual(31 + 28 + 31 + 5, d.DayOfYear);
 		}
 
+    [Test]
+    public void CanConstructFromDateTime()
+    {
+      Date d1 = new Date(new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8));
+      Date d2 = new Date(2001, 2, 3);
+      Assert.AreEqual(d1, d2);
+      Assert.IsTrue(d1.Equals(d2));
+    }
+
+    [Test]
+    public void ToDateRemovesAllTimePortion()
+    {
+      Date d1 = new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8).ToDate();
+      Date d2 = new Date(2001, 2, 3);
+      Assert.AreEqual(d1, d2);
+      Assert.IsTrue(d1.Equals(d2));
+    }
+
 		[Test]
 		public void CanGetDateFromDateTime()
 		{
