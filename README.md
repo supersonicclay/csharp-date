@@ -21,4 +21,4 @@ independenceDay.ToString("s");     // "2013-07-04"
 int july = independenceDay.Month;  // 7
 ```
 
-Licensed under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+Licensed under [MIT](http://opensource.org/licenses/MIT).
