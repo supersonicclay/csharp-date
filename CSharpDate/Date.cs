@@ -22,11 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace System
 {
+	[Serializable]
 	public struct Date : IComparable, IFormattable, ISerializable, IComparable<Date>, IEquatable<Date>
 	{
 		private DateTime _dt;
@@ -42,6 +44,11 @@ namespace System
 		public Date(DateTime dateTime)
 		{
 			this._dt = dateTime.AddTicks(-dateTime.Ticks % TimeSpan.TicksPerDay);
+		}
+		
+		private Date(SerializationInfo info, StreamingContext context)
+		{
+			this._dt = DateTime.FromFileTime(info.GetInt64("ticks"));
 		}
 
 		public static TimeSpan operator -(Date d1, Date d2)
