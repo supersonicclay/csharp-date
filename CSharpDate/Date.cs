@@ -35,7 +35,7 @@ namespace System
 
 		public static readonly Date MaxValue = new Date(DateTime.MaxValue);
 		public static readonly Date MinValue = new Date(DateTime.MinValue);
-		
+
 		public Date(int year, int month, int day)
 		{
 			this._dt = new DateTime(year, month, day);
@@ -45,7 +45,7 @@ namespace System
 		{
 			this._dt = dateTime.AddTicks(-dateTime.Ticks % TimeSpan.TicksPerDay);
 		}
-		
+
 		private Date(SerializationInfo info, StreamingContext context)
 		{
 			this._dt = DateTime.FromFileTime(info.GetInt64("ticks"));
