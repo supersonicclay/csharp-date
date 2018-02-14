@@ -44,6 +44,7 @@ namespace CSharpDate.Test
 			Assert.Equal(5, d.Day);
 			Assert.Equal(DayOfWeek.Friday, d.DayOfWeek);
 			Assert.Equal(31 + 28 + 31 + 5, d.DayOfYear);
+			Assert.Equal(635007168000000000, d.Ticks);
 		}
 
     [Fact]

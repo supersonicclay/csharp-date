@@ -154,6 +154,14 @@ namespace System
 			}
 		}
 
+		public long Ticks
+		{
+			get
+			{
+				return this._dt.Ticks;
+			}
+		}
+
 		public Date AddDays(int value)
 		{
 			return new Date(this._dt.AddDays(value));
