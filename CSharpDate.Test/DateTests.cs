@@ -57,6 +57,15 @@ namespace CSharpDate.Test
 		}
 
 		[Fact]
+		public void CanConstructFromDateTimeOffset()
+		{
+			Date d1 = new Date(new DateTimeOffset(2001, 2, 3, 4, 5, 6, 7, TimeSpan.Zero).AddTicks(8));
+			Date d2 = new Date(2001, 2, 3);
+			Assert.Equal(d1, d2);
+			Assert.True(d1.Equals(d2));
+		}
+
+		[Fact]
 		public void ToDateRemovesAllTimePortion()
 		{
 			Date d1 = new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8).ToDate();
@@ -74,6 +83,17 @@ namespace CSharpDate.Test
 			Assert.Equal(dt.Year, d.Year);
 			Assert.Equal(dt.Month, d.Month);
 			Assert.Equal(dt.Day, d.Day);
+		}
+
+		[Fact]
+		public void CanGetDateFromDateTimeOffset()
+		{
+			DateTimeOffset dto = new DateTimeOffset(2013, 4, 5, 6, 7, 8, 9, TimeSpan.Zero);
+			Date d = dto.ToDate();
+
+			Assert.Equal(dto.Year, d.Year);
+			Assert.Equal(dto.Month, d.Month);
+			Assert.Equal(dto.Day, d.Day);
 		}
 
 		[Fact]
@@ -218,6 +238,35 @@ namespace CSharpDate.Test
 			Assert.Equal(dt.Year, d.Year);
 			Assert.Equal(dt.Month, d.Month);
 			Assert.Equal(dt.Day, d.Day);
+		}
+
+		[Fact]
+		public void CanImplicitCastToDateTimeOffset()
+		{
+			Date d = new Date(2013, 4, 5);
+			DateTimeOffset dt = d;
+
+			Assert.Equal(d.Year, dt.Year);
+			Assert.Equal(d.Month, dt.Month);
+			Assert.Equal(d.Day, dt.Day);
+			Assert.Equal(d.DayOfWeek, dt.DayOfWeek);
+			Assert.Equal(d.DayOfYear, dt.DayOfYear);
+			Assert.Equal(0, dt.Hour);
+			Assert.Equal(0, dt.Minute);
+			Assert.Equal(0, dt.Second);
+			Assert.Equal(0, dt.Millisecond);
+		}
+
+		[Fact]
+		public void CanExplicitCastToDateTimeOffset()
+		{
+			DateTime dt = new DateTime(2000, 1, 2, 3, 4, 5);
+			DateTimeOffset dto = new DateTimeOffset(dt, TimeSpan.FromMinutes(1));
+			Date d = (Date)dto;
+
+			Assert.Equal(dto.Year, d.Year);
+			Assert.Equal(dto.Month, d.Month);
+			Assert.Equal(dto.Day, d.Day);
 		}
 
 		[Fact]
