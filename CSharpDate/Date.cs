@@ -46,6 +46,10 @@ namespace System
 			this._dt = dateTime.AddTicks(-dateTime.Ticks % TimeSpan.TicksPerDay);
 		}
 
+		public Date(DateTimeOffset dateTimeOffset)
+			:this(dateTimeOffset.DateTime)
+		{ }
+
 		private Date(SerializationInfo info, StreamingContext context)
 		{
 			this._dt = DateTime.FromFileTime(info.GetInt64("ticks"));
@@ -102,6 +106,16 @@ namespace System
 		}
 
 		public static explicit operator Date(DateTime d)
+		{
+			return new Date(d);
+		}
+
+		public static implicit operator DateTimeOffset(Date d)
+		{
+			return d._dt;
+		}
+
+		public static explicit operator Date(DateTimeOffset d)
 		{
 			return new Date(d);
 		}
@@ -340,6 +354,14 @@ namespace System
 		public static Date ToDate(this DateTime dt)
 		{
 			return new Date(dt);
+		}
+	}
+
+	public static class DateTimeOffsetExtensions
+	{
+		public static Date ToDate(this DateTimeOffset dto)
+		{
+			return new Date(dto);
 		}
 	}
 }
