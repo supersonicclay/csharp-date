@@ -47,23 +47,23 @@ namespace CSharpDate.Test
 			Assert.Equal(635007168000000000, d.Ticks);
 		}
 
-    [Fact]
-    public void CanConstructFromDateTime()
-    {
-      Date d1 = new Date(new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8));
-      Date d2 = new Date(2001, 2, 3);
-      Assert.Equal(d1, d2);
-      Assert.True(d1.Equals(d2));
-    }
+		[Fact]
+		public void CanConstructFromDateTime()
+		{
+			Date d1 = new Date(new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8));
+			Date d2 = new Date(2001, 2, 3);
+			Assert.Equal(d1, d2);
+			Assert.True(d1.Equals(d2));
+		}
 
-    [Fact]
-    public void ToDateRemovesAllTimePortion()
-    {
-      Date d1 = new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8).ToDate();
-      Date d2 = new Date(2001, 2, 3);
-      Assert.Equal(d1, d2);
-      Assert.True(d1.Equals(d2));
-    }
+		[Fact]
+		public void ToDateRemovesAllTimePortion()
+		{
+			Date d1 = new DateTime(2001, 2, 3, 4, 5, 6, 7).AddTicks(8).ToDate();
+			Date d2 = new Date(2001, 2, 3);
+			Assert.Equal(d1, d2);
+			Assert.True(d1.Equals(d2));
+		}
 
 		[Fact]
 		public void CanGetDateFromDateTime()
