@@ -12,13 +12,13 @@ Example
 ```C#
 Date today = Date.Today;
 Date yesterday = Date.Today.AddDays(-1);
-Date independenceDay = Date.Parse("2013-07-04");
+Date piDay = Date.Parse("2015-03-14");
 
-independenceDay.ToLongString();    // "Thursday, July 4, 2013"
-independenceDay.ToShortString();   // "7/4/2013"
-independenceDay.ToString();        // "7/4/2013"
-independenceDay.ToString("s");     // "2013-07-04"
-int july = independenceDay.Month;  // 7
+piDay.ToLongString();    // "Saturday, March 14, 2015"
+piDay.ToShortString();   // "3/14/2015"
+piDay.ToString();        // "3/14/2015"
+piDay.ToString("s");     // "2015-03-14"
+int march = piDay.Month;  // 3
 ```
 
 Licensed under [MIT](http://opensource.org/licenses/MIT).
